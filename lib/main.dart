@@ -9,8 +9,6 @@ import 'package:emeron/core/services/di/service.binding.dart';
 
 void main() async {
   Get.put(EnvConfig());
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   await Get.find<EnvConfig>().initConfig(environment: Environment.emeronHomolog);
   runApp(const MainApp());
 }

@@ -5,7 +5,9 @@ import 'package:emeron/features/home/core/bindings/home.binding.dart';
 import 'package:emeron/features/auth/presentation/pages/auth.page.dart';
 import 'package:emeron/features/home/presentation/pages/home.page.dart';
 import 'package:emeron/features/splash/core/bindings/splash.binding.dart';
+import 'package:emeron/features/library/core/bindings/library.binding.dart';
 import 'package:emeron/features/splash/presentation/pages/splash.page.dart';
+import 'package:emeron/features/library/presentation/pages/library.page.dart';
 import 'package:emeron/features/calendar/core/bindings/calendar.binding.dart';
 import 'package:emeron/features/calendar/presentation/pages/calendar.page.dart';
 import 'package:emeron/features/certificates/core/bindings/certificate.binding.dart';
@@ -15,7 +17,7 @@ class AppPages {
   static final pages = [
     GetPage(
       name: AppRoutes.splash,
-      page: () => SplashPage(),
+      page: () => const SplashPage(),
       binding: SplashBinding(),
     ),
     GetPage(
@@ -33,6 +35,11 @@ class AppPages {
       name: AppRoutes.certificates,
       page: () => CertificatePage(),
       binding: CertificatesBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.library,
+      page: () => LibraryPage(),
+      binding: LibraryBinding(),
     ),
   ];
 }

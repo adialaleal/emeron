@@ -29,7 +29,7 @@ class EnvConfig {
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         systemNavigationBarContrastEnforced: true,
-        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.light,
       ),
     );
   }

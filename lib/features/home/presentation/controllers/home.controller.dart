@@ -4,6 +4,11 @@ import 'package:emeron/routes/app_routes.dart';
 import 'package:emeron/features/home/domain/entities/menu.entity.dart';
 
 class HomeController extends GetxController {
+  
+  RxString userEmail = ''.obs;
+  RxString userDisplayName = ''.obs;
+  RxString userUID = ''.obs;
+
   List<MenuEntity> menuList = [
     MenuEntity(
       icon: Icons.calendar_month,
@@ -32,7 +37,7 @@ class HomeController extends GetxController {
     MenuEntity(
       icon: Icons.local_library,
       label: 'virtual_environment'.tr,
-      route: '',
+      route: AppRoutes.library,
       external: true,
     ),
     MenuEntity(

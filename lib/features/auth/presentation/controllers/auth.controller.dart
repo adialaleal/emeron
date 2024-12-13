@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:emeron/routes/app_routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:emeron/core/utils/helpers/validators/cpf.validator.dart';
 import 'package:emeron/features/auth/domain/usecases/authenticate_user.usecase.dart';
 import 'package:emeron/features/auth/domain/usecases/authenticate_with_firebase_user.usecase.dart';
@@ -49,10 +50,15 @@ class AuthController extends GetxController {
 
   Future<void> signInWithFirebase() async {
     try {
-      await authenticateWithFirebaseUserUseCase(
+      UserCredential user = await authenticateWithFirebaseUserUseCase(
         emailController.text,
         passwordController.text,
       );
+
+      print(user.user?.email);
+
+      
+
       Get.offAndToNamed(AppRoutes.home);
     } catch (e) {
       // Handle login error, e.g., show an error message

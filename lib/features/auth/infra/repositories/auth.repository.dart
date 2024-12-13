@@ -51,6 +51,7 @@ class AuthRepositoryImpl implements IAuthRepository {
       final dto = SignInRequestDTO(login: login, password: password);
 
       final userDTO = await remoteDatasource.signInFirebaseEmail(dto);
+      await localDatasource.saveUserCredentials(userDTO);
 
       return userDTO;
     } catch (e) {

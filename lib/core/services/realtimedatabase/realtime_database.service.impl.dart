@@ -1,26 +1,27 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emeron/core/services/realtimedatabase/realtime_database.service.dart';
 
 class RealtimeDatabaseServiceImpl extends GetxService implements IRealTimeDatabaseService {
+  final FirebaseFirestore _firebase;
 
-  final _firebase = FirebaseFirestore.instance;
+  RealtimeDatabaseServiceImpl({FirebaseFirestore? firestore}) : _firebase = firestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<void> document(document) {
+  Future<void> document(
+      {required String collection, required String document, required Map<String, dynamic> data}) async {
+    await _createCollection(collection).doc(document).set(data);
   }
 
   @override
-  Future<DocumentSnapshot<Map<String, dynamic>>> get() {
-    // TODO: implement get
-    throw UnimplementedError();
+  Future<QuerySnapshot<Object?>> get({
+    required String collection,
+  }) {
+    return _createCollection(collection).get();
   }
 
-  @override
-  Future<void> createCollection(String collectionName) {
-    // TODO: implement initCollection
-    throw UnimplementedError();
+  CollectionReference _createCollection(String collectionName) {
+    return _firebase.collection(collectionName);
   }
 }
 /*
